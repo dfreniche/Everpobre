@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Everpobre</string>
     <string name="everpobre_app_starting">Everpobre APP STARTING</string>
+    <string name="title_activity_edit_notebook">EditNotebookActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_show_notebook">ShowNotebookActivity</string>
+    <string name="title_activity_edit_notes">EditNotesActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="menu_main_edit_notebook_text">Edit Notebook</string>
 </resources>
