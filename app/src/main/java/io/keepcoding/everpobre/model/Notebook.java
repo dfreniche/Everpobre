@@ -1,15 +1,37 @@
 package io.keepcoding.everpobre.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Notebook {
     private long id;
     private String name;
     private Date creationDate;
     private Date modificationDate;
+    private List<Note> notes;
+
 
     public Notebook(String name) {
         this.name = name;
+        this.creationDate = new Date();
+    }
+
+    public List<Note> allNotes() {
+        if (notes == null) {
+            notes = new ArrayList<Note>();
+        }
+
+        return notes;
+    }
+
+    public void addNote(Note note) {
+        allNotes().add(note);
+    }
+
+    public void addNote(String noteText) {
+        Note note = new Note(this, noteText);
+        addNote(note);
     }
 
     public long getId() {
