@@ -8,4 +8,5 @@
     <string name="title_activity_show_notebook">ShowNotebookActivity</string>
     <string name="title_activity_edit_notes">EditNotesActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="menu_main_edit_notebook_text">Edit Notebook</string>
 </resources>
