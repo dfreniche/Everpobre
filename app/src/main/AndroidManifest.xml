@@ -1,13 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.keepcoding.everpobre">
+    package="io.keepcoding.everpobre" >
 
     <application
         android:name=".EverpobreApp"
         android:allowBackup="true"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.EditNotebookActivity"
+            android:label="@string/title_activity_edit_notebook" >
+        </activity>
+        <activity
+            android:name=".activities.ShowNotebookActivity"
+            android:label="@string/title_activity_show_notebook" >
+        </activity>
+        <activity
+            android:name=".activities.EditNotesActivity"
+            android:label="@string/title_activity_edit_notes" >
+        </activity>
     </application>
 
 </manifest>
