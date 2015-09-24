@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/txt_notebook_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/icon_notebook"
+        android:layout_below="@+id/icon_notebook"
+        android:layout_marginTop="14dp"
+        tools:text="My test Notebook" />
+
+    <ImageView
+        android:id="@+id/icon_notebook"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/notebook" />
+
+</RelativeLayout>
