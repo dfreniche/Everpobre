@@ -1,11 +1,6 @@
 package io.keepcoding.everpobre.model.db;
 
 public class DBConstants {
-    public static final String[] CREATE_DATABASE = {
-            SQL_CREATE_NOTEBOOK_TABLE,
-            SQL_CREATE_NOTE_TABLE
-    };
-
     public static final String DROP_DATABASE = "";
 
     public static final String TABLE_NOTEBOOK = "NOTEBOOK";
@@ -55,4 +50,8 @@ public class DBConstants {
                     + "FOREIGN KEY(" + KEY_NOTE_NOTEBOOK + ") REFERENCES " + TABLE_NOTEBOOK + "(" + KEY_NOTEBOOK_ID + ") ON DELETE CASCADE"
                     + ");";
 
+    public static final String[] CREATE_DATABASE = {
+            SQL_CREATE_NOTEBOOK_TABLE,
+            SQL_CREATE_NOTE_TABLE
+    };
 }
