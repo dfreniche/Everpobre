@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
+
 import io.keepcoding.everpobre.model.Notebook;
 import io.keepcoding.everpobre.model.db.DBHelper;
 
@@ -19,10 +21,10 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
             KEY_NOTEBOOK_MODIFICATION_DATE
     };
 
-    private Context context;
+    private WeakReference<Context> context;
 
     public NotebookDAO(@NonNull Context context) {
-        this.context = context;
+        this.context = new WeakReference<Context>(context);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
             return 0;
         }
         // insert
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         long id = db.getWritableDatabase().insert(TABLE_NOTEBOOK, null, this.getContentValues(notebook));
         notebook.setId(id);
@@ -47,7 +49,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
             return;
         }
 
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         db.getWritableDatabase().update(TABLE_NOTEBOOK, this.getContentValues(notebook), KEY_NOTEBOOK_ID + "=" + id, null);
 
@@ -57,7 +59,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
 
     @Override
     public void delete(long id) {
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         db.getWritableDatabase().delete(TABLE_NOTEBOOK,  KEY_NOTEBOOK_ID + " = " + id, null);
 
@@ -67,7 +69,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
 
     @Override
     public void deleteAll() {
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         db.getWritableDatabase().delete(TABLE_NOTEBOOK,  null, null);
 
@@ -104,7 +106,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
 
     public @NonNull Cursor queryCursor() {
         // select
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         Cursor c = db.getReadableDatabase().query(TABLE_NOTEBOOK, allColumns, null, null, null, null, null);
 
@@ -121,7 +123,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
     public @Nullable Notebook query(long id) {
         Notebook notebook = null;
 
-        DBHelper db = DBHelper.getInstance(context);
+        DBHelper db = DBHelper.getInstance(context.get());
 
         String where = KEY_NOTEBOOK_ID + "=" + id;
         Cursor c = db.getReadableDatabase().query(TABLE_NOTEBOOK, allColumns, where, null, null, null, null);
