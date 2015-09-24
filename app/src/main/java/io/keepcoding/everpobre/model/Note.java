@@ -83,7 +83,7 @@ public class Note {
         this.longitude = longitude;
     }
 
-    public boolean isHasCoordinates() {
+    public boolean hasCoordinates() {
         return hasCoordinates;
     }
 
