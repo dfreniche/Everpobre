@@ -3,13 +3,15 @@ package io.keepcoding.everpobre.model.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import io.keepcoding.everpobre.model.Notebook;
 import io.keepcoding.everpobre.model.db.DBHelper;
 
 import static io.keepcoding.everpobre.model.db.DBConstants.*;
 
-public class NotebookDAO {
+public class NotebookDAO implements DAOPersistable<Notebook>{
     public static final String[] allColumns = {
             KEY_NOTEBOOK_ID,
             KEY_NOTEBOOK_NAME,
@@ -19,11 +21,12 @@ public class NotebookDAO {
 
     private Context context;
 
-    public NotebookDAO(Context context) {
+    public NotebookDAO(@NonNull Context context) {
         this.context = context;
     }
 
-    public long insert(Notebook notebook) {
+    @Override
+    public long insert(@NonNull Notebook notebook) {
         if (notebook == null) {
             return 0;
         }
@@ -38,7 +41,8 @@ public class NotebookDAO {
         return id;
     }
 
-    public void update(long id, Notebook notebook) {
+    @Override
+    public void update(long id, @NonNull Notebook notebook) {
         if (notebook == null) {
             return;
         }
@@ -51,6 +55,7 @@ public class NotebookDAO {
         db=null;
     }
 
+    @Override
     public void delete(long id) {
         DBHelper db = DBHelper.getInstance(context);
 
@@ -60,6 +65,7 @@ public class NotebookDAO {
         db=null;
     }
 
+    @Override
     public void deleteAll() {
         DBHelper db = DBHelper.getInstance(context);
 
@@ -96,7 +102,7 @@ public class NotebookDAO {
         return n;
     }
 
-    public Cursor queryCursor() {
+    public @NonNull Cursor queryCursor() {
         // select
         DBHelper db = DBHelper.getInstance(context);
 
@@ -111,7 +117,8 @@ public class NotebookDAO {
      * @param id - the notebook id in db
      * @return Notebook object if found, null otherwise
      */
-    public Notebook query(long id) {
+    @Override
+    public @Nullable Notebook query(long id) {
         Notebook notebook = null;
 
         DBHelper db = DBHelper.getInstance(context);
