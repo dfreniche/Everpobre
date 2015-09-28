@@ -330,12 +330,18 @@ __STEP 9__
 ---	
 	
 * Editar Notebooks
-	* al hacer un long click editamos el Notebook 
+	* al hacer un long click deberíamos editar el Notebook
+	* ahora mismo provoca un crash!
+		* ver DataGridFragment: usamos el listener sin comprobar si es null :-(
+		* añadir código defensivo
+		* establecer el listener 
 	* añadir el evento de longClickListener
 	* pasar el id que obtenemos en el evento a la actividad
 	* lanzar misma EditNotebookActivity, pasando en el Intent el id
 	* en EditNotebookActivity, obtenemos el id y leemos el registro, para añadir / editar
 	    * cuándo grabar los datos de la BD
+
+__STEP 10__			
 
 
 ## Mandamiento: no accederás a DB en el hilo main
