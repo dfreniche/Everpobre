@@ -48,15 +48,20 @@ public class DataGridFragment extends Fragment {
         gridNotebooks.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return listener.dataGridElementLongClick(parent, view, position, id);
+                if (listener != null) {
+                    return listener.dataGridElementLongClick(parent, view, position, id);
+                } else {
+                    return false;
+                }
             }
         });
 
         gridNotebooks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listener.dataGridElementClick(parent, view, position, id);
-
+                if (listener != null) {
+                    listener.dataGridElementClick(parent, view, position, id);
+                }
             }
         });
 

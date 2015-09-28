@@ -1,9 +1,20 @@
 # Everpobre paso a paso Curso
 
+This project's repository has tags for each milestone (steps). So you can quickly advance to a certain step just doing a checkout of step/nn
+
+```
+$ git tag -l
+step/1
+step/2
+step/3
+...
+```
+
+
 ## Presentar el problema que queremos solucionar
 	
 * Qué es Everpobre
-* mostrar mockup con balsamiq
+* mostrar capturas pantalla
 * crear el proyecto Everpobre en Android Studio
 	* crear una nueva app android
 		* project name: Everpobre
@@ -308,12 +319,16 @@ __STEP 8__
 	* repasar: la Actividad EditNotebookActivity se lanzaba desde main
 	* añadir EditText al layout
 	* añadir opción al menú edit para grabar
+	* leer el texto escrito para poner el título del Notebook
 	* al grabar, insertar en BD, cerrar
-	* al volver, hay que actualizar el adapter: movemos el código de onCreate a onResume
+	* al volver, hay que actualizar el adapter: movemos el código de onCreate a onResume (método refreshData)
+	* problemas: ¡no funciona! Depuramos con tests
 	
+	
+__STEP 9__			
+
 ---	
 	
-	* leer el texto escrito para poner el título del Notebook
 * Editar Notebooks
 	* al hacer un long click editamos el Notebook 
 	* añadir el evento de longClickListener
