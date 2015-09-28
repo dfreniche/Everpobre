@@ -9,4 +9,6 @@
     <string name="title_activity_edit_notes">EditNotesActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="menu_main_edit_notebook_text">Edit Notebook</string>
+    <string name="enter_notebook_name">Notebook name</string>
+    <string name="action_edit_notebook_save">Save</string>
 </resources>
