@@ -28,10 +28,22 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        insertDummyData();
+        // insertDummyData();
 
         dataGridFragment = (DataGridFragment) getFragmentManager().findFragmentById(R.id.grid_fragment);
 
+        refreshData();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        refreshData();
+    }
+
+    private void refreshData() {
         final NotebookDAO notebookDAO = new NotebookDAO(this);
         cursor = notebookDAO.queryCursor();
 
