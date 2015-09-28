@@ -34,6 +34,10 @@ public class DataGridFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    public void setAdapter(DataGridAdapter adapter) {
+        this.adapter = adapter;
 
         gridNotebooks = (GridView)getActivity().findViewById(R.id.grid_notebooks);
 
@@ -56,10 +60,6 @@ public class DataGridFragment extends Fragment {
             }
         });
 
-    }
-
-    public void setAdapter(DataGridAdapter adapter) {
-        this.adapter = adapter;
     }
 
     public void setOnDataGridFragmentListener(OnDataGridFragmentClickListener listener) {

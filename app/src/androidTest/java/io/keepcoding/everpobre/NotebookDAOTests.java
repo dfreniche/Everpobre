@@ -25,6 +25,29 @@ public class NotebookDAOTests extends AndroidTestCase {
         assertTrue(numRecords + 1 == c.getCount());
     }
 
+    public void testTwoInsertsWork() {
+        NotebookDAO notebookDao = new NotebookDAO(getContext());
+        assertNotNull(notebookDao);
+
+        Cursor c = notebookDao.queryCursor();
+        assertNotNull(c);
+
+        int numRecords = c.getCount();
+
+        Notebook notebook = new Notebook("1st insert");
+        notebookDao.insert(notebook);
+
+        Cursor c2 = notebookDao.queryCursor();
+        assertTrue(numRecords + 1 == c2.getCount());
+
+        Notebook notebook2 = new Notebook("2nd insert");
+        notebookDao.insert(notebook2);
+
+        Cursor c3 = notebookDao.queryCursor();
+        assertTrue(numRecords + 2 == c3.getCount());
+    }
+
+
     public void testDelete() {
         NotebookDAO notebookDao = new NotebookDAO(getContext());
         assertNotNull(notebookDao);
