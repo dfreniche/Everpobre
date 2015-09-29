@@ -3,6 +3,7 @@ package io.keepcoding.everpobre.model.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -33,12 +34,21 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
             return 0;
         }
         // insert
-        DBHelper db = DBHelper.getInstance(context.get());
+        DBHelper dbHelper = DBHelper.getInstance(context.get());
+        SQLiteDatabase db = dbHelper.getDB();
 
-        long id = db.getWritableDatabase().insert(TABLE_NOTEBOOK, null, this.getContentValues(notebook));
-        notebook.setId(id);
-        db.close();
-        db=null;
+        db.beginTransaction();
+        long id = DBHelper.INVALID_ID;
+        try {
+            id = dbHelper.getWritableDatabase().insert(TABLE_NOTEBOOK, null, this.getContentValues(notebook));
+            notebook.setId(id);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+
+        dbHelper.close();
+        dbHelper=null;
 
         return id;
     }

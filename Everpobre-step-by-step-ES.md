@@ -379,10 +379,53 @@ __STEP 10__
 __STEP 11__		
 
 ### Cursor Loaders
-* Usar Cursor Loader
-	* implementar el interfaz LoaderManager.LoaderCallbacks<Cursor>
-	* escribir 3 métodos loader
-	
+* Usar Cursor Loader en DataGridFragment
+	* implementar el interfaz LoaderManager.LoaderCallbacks<Cursor> en DataGridFragment
+	* escribir 3 métodos loader:
+```
+@Override
+public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+	return null;
+}
+
+@Override
+public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+
+}
+
+@Override
+public void onLoaderReset(Loader<Cursor> loader) {
+
+}
+
+```
+
+* Para que sea genérico, pasamos los valores de estas propiedades al DataGridFragment
+	* añadimos getters y setters
+
+```
+private Uri dataGridUri;
+private String[] projection;
+private String selection;
+private String[] selectionArgs;
+private String sortOrder;
+```	
+
+* Añadir en onActivityCreated:
+
+```
+LoaderManager loader = getLoaderManager();
+loader.initLoader(0, null, this);
+```
+
+
+* Mover el código de MainActivity.refreshData()
+* añadir un getter/ setter al fragmento para establecer su elementDataSource
+* eliminar método refreshData de MainActivity
+	* dejar vacío onResume()
+* Ahora no se actualizan las cosas. ¿Por qué? Porque usamos los DAO directamente en EditNotebookActivity. Usemos nuestro EverpobreProvider
+
+__STEP 12__
 
     
 * Listar todas las notas de un Notebook

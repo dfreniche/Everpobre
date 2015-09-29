@@ -1,6 +1,8 @@
 package io.keepcoding.everpobre.activities;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import butterknife.ButterKnife;
 import io.keepcoding.everpobre.R;
 import io.keepcoding.everpobre.model.Notebook;
 import io.keepcoding.everpobre.model.dao.NotebookDAO;
+import io.keepcoding.everpobre.provider.EverpobreProvider;
 import io.keepcoding.everpobre.util.Constants;
 
 public class EditNotebookActivity extends AppCompatActivity {
@@ -58,7 +61,10 @@ public class EditNotebookActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit_notebook_save:
-                NotebookDAO notebookDao = new NotebookDAO(this);
+
+                ContentResolver cr = getContentResolver();
+
+                // NotebookDAO notebookDao = new NotebookDAO(this);
                 String name = "" + editNotebookName.getText();
                 if ("".equals(name)) {
                     Toast.makeText(this, "We need a name", Toast.LENGTH_SHORT).show();
@@ -67,10 +73,14 @@ public class EditNotebookActivity extends AppCompatActivity {
 
                 if (mode == EditMode.ADDING) {
                     Notebook notebook = new Notebook(name);
-                    notebookDao.insert(notebook);
+                    cr.insert(EverpobreProvider.NOTEBOOKS_URI, NotebookDAO.getContentValues(notebook));
+                    //notebookDao.insert(notebook);
                 } else {
                     notebookToEdit.setName(name);
-                    notebookDao.update(notebookId, notebookToEdit);
+                    String sUri = EverpobreProvider.NOTEBOOKS_URI.toString() + "/" + notebookToEdit.getId();
+                    Uri uri = Uri.parse(sUri);
+                    cr.update(uri, NotebookDAO.getContentValues(notebookToEdit), null, null);
+                    //notebookDao.update(notebookId, notebookToEdit);
                 }
                 finish();
 

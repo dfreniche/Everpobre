@@ -15,14 +15,12 @@ import io.keepcoding.everpobre.adapters.DataGridAdapter;
 import io.keepcoding.everpobre.fragments.DataGridFragment;
 import io.keepcoding.everpobre.model.Notebook;
 import io.keepcoding.everpobre.model.dao.NotebookDAO;
+import io.keepcoding.everpobre.provider.EverpobreProvider;
 import io.keepcoding.everpobre.util.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
     DataGridFragment dataGridFragment;
-
-    DataGridAdapter adapter;
-    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        // insertDummyData();
-
         dataGridFragment = (DataGridFragment) getFragmentManager().findFragmentById(R.id.grid_fragment);
+
+        dataGridFragment.setDataGridUri(EverpobreProvider.NOTEBOOKS_URI);
 
         dataGridFragment.setOnDataGridFragmentListener(new DataGridFragment.OnDataGridFragmentClickListener() {
             @Override
@@ -52,22 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        refreshData();
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        refreshData();
-    }
-
-    private void refreshData() {
-        final NotebookDAO notebookDAO = new NotebookDAO(this);
-        cursor = notebookDAO.queryCursor();
-
-        adapter = new DataGridAdapter(this, cursor, new DataGridAdapter.DataGridAdapterElementDataSource() {
+        dataGridFragment.setElementDataSource(new DataGridAdapter.DataGridAdapterElementDataSource() {
             @Override
             public String getDataGridElementTitle(Cursor cursor) {
                 Notebook notebook = NotebookDAO.notebookFromCursor(cursor);
@@ -89,17 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 return R.id.txt_notebook_name;
             }
         });
-        dataGridFragment.setAdapter(adapter);
     }
 
-    private void insertDummyData() {
-        final NotebookDAO notebookDAO = new NotebookDAO(this);
-
-        for (int i = 0; i < 10; i++) {
-            Notebook notebook = new Notebook("To do " + i);
-            notebookDAO.insert(notebook);
-        }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

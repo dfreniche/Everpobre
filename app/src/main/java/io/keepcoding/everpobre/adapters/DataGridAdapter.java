@@ -72,4 +72,12 @@ public class DataGridAdapter extends CursorAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         return super.getView(position, convertView, parent);
     }
+
+    public DataGridAdapterElementDataSource getDataProvider() {
+        return dataProvider;
+    }
+
+    public void setDataProvider(DataGridAdapterElementDataSource dataProvider) {
+        this.dataProvider = dataProvider;
+    }
 }
