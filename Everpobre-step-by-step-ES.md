@@ -350,16 +350,18 @@ __STEP 10__
 	* El diálogo que debemos siempre evitar.
     * Lanzar tareas en segundo plano con AsyncTask _repaso_
     * podemos usar AsyncTask a mano, perfecto para bases de datos que no se se van a usar fuera de nuestra App
-    * Ponerlo como ejercicio para el lector
-    	* solución en ServerTracker
-
+    * no lo vamos a hacer: ejercicio para el lector
     	
 ### Content providers
     	
 * Crear nuestro Content provider
 	* qué es un Content Provider
 	* ¿Por qué lo necesitamos si ya tenemos los DAO? --> para usar un Cursor Loader
-	* registrar content provider en Manifest
+	* un Provider es como una API REST en nuestro programa Android
+		* content://io.keepcoding.everpobre.provider/notebooks
+		* content://io.keepcoding.everpobre.provider/notes
+
+	* registrar content provider en Manifest (dentro de Application)
 	`<provider android:name=".provider.EverpobreProvider" android:authorities="com.agbotraining.everpobre.provider"/>` 
 	* definir URI provider y principales (NOTEBOOKS y NOTES)
 	* añadir UriMatcher
@@ -372,6 +374,9 @@ __STEP 10__
 	* Escribir nuevos tests de unidad del content provider
 	* añadir métodos estáticos de conveniencia
 	* añadir tests de estos métodos estáticos 
+
+
+__STEP 11__		
 
 ### Cursor Loaders
 * Usar Cursor Loader
