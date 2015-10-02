@@ -285,10 +285,11 @@ __STEP 6__
 		* qué es un adapter
 		* BaseAdapter <--> CursorAdapter
 		* añadimos CursorAdapter de android.support.v4.widget.CursorAdapter;
-		* métodos principales:
+		* métodos principales del Cursor Adapter:
 			* public View newView(Context context, Cursor cursor, ViewGroup parent) 
 			* public void bindView(View view, Context context, Cursor cursor) {
-			* public View getView(int position, View convertView, ViewGroup parent) {
+			
+			* public View getView(int position, View convertView, ViewGroup parent) --> para BaseAdapter
 		* el adapter necesita conocer "cosas": los datos a mostrar y los controles donde mostrarlos. En lugar de ponerlos en el código, definimos un interfaz e inyectamos en el constructor el responsable de pasarnos esta información
 		* esta clase podría testearse :-D
 	* Si lanzamos la App, se carga la MainActivity, carga el fragmento con el GridView, pero no vemos nada: el Fragmento no tiene adapter (aún)
@@ -427,11 +428,17 @@ loader.initLoader(0, null, this);
 
 __STEP 12__
 
+* Editar Notebooks II: borrar notebooks
+	* añadir opción de menu a EditNotebookActivity
+	* cuando se seleccione, borrar usando el content provider
     
+__STEP 13__	
+	
 * Listar todas las notas de un Notebook
 	* añadir onItemClickListener a GridView 
 	* lanzar actividad ShowNotebookActivity desde MainActivity
 	* mostrar notas en un GridView	
+
 	
 ## Añadir notas
  
@@ -562,7 +569,27 @@ __STEP 12__
 
     * Poniendo pins en el mapa
 
+---
 
+# Servicio
+
+* Crear un servicio que nos avise de si estamos en la zona GPS donde se creó una nota
+* el servicio se arrancará con la App.
+* al iniciarse, imprime una notificación
+	* esta notificación contiene un pending intent para lanzar nuestra pantalla main
+* acceso al servicio a través de la clase de la App
+* parar el servicio desde una opción de menú
+
+* cada 5 seg el servicio comprueba y si estamos dentro de un radio de 1000 m de una nota nos avisa.
+	* posteando notificaciones
+		* mensajes en el área de notificaciones
+		* encendiendo los LEDs del dispositivo
+    
+
+    OLVIDADO: al actualizar un registro, cambiar fecha de actualización, ordenar por fecha de actualización
+
+
+---
 
 
 # Evernote API
@@ -613,22 +640,7 @@ Consumer Secret: 63146f1fb373923d
 ---
 
 
-# Servicio
 
-* Crear un servicio que nos avise de si estamos en la zona GPS donde se creó una nota
-* el servicio se arrancará con la App.
-* al iniciarse, imprime una notificación
-	* esta notificación contiene un pending intent para lanzar nuestra pantalla main
-* acceso al servicio a través de la clase de la App
-* parar el servicio desde una opción de menú
-
-* cada 5 seg el servicio comprueba y si estamos dentro de un radio de 1000 m de una nota nos avisa.
-	* posteando notificaciones
-		* mensajes en el área de notificaciones
-		* encendiendo los LEDs del dispositivo
-    
-
-    OLVIDADO: al actualizar un registro, cambiar fecha de actualización, ordenar por fecha de actualización
 
 
 ## ANEXO A: ADB DESDE CONSOLA    

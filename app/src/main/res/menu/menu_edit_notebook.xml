@@ -8,4 +8,10 @@
         android:title="@string/action_edit_notebook_save"
         android:orderInCategory="100"
         app:showAsAction="always" />
+
+    <item android:id="@+id/action_delete_notebook"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/action_delete_notebook_text"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

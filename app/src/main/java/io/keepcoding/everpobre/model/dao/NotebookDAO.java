@@ -99,7 +99,7 @@ public class NotebookDAO implements DAOPersistable<Notebook>{
 
 
     // convenience method
-    public static Notebook notebookFromCursor(Cursor c) {
+    public static Notebook  notebookFromCursor(Cursor c) {
         assert c != null;
 
         Notebook n = new Notebook(c.getString(c.getColumnIndex(KEY_NOTEBOOK_NAME)));

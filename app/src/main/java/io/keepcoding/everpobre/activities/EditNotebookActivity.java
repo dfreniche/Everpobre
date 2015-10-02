@@ -61,32 +61,48 @@ public class EditNotebookActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit_notebook_save:
-
-                ContentResolver cr = getContentResolver();
-
-                // NotebookDAO notebookDao = new NotebookDAO(this);
-                String name = "" + editNotebookName.getText();
-                if ("".equals(name)) {
-                    Toast.makeText(this, "We need a name", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-
-                if (mode == EditMode.ADDING) {
-                    Notebook notebook = new Notebook(name);
-                    cr.insert(EverpobreProvider.NOTEBOOKS_URI, NotebookDAO.getContentValues(notebook));
-                    //notebookDao.insert(notebook);
-                } else {
-                    notebookToEdit.setName(name);
-                    String sUri = EverpobreProvider.NOTEBOOKS_URI.toString() + "/" + notebookToEdit.getId();
-                    Uri uri = Uri.parse(sUri);
-                    cr.update(uri, NotebookDAO.getContentValues(notebookToEdit), null, null);
-                    //notebookDao.update(notebookId, notebookToEdit);
-                }
+                saveNotebook();
                 finish();
 
+                break;
+
+            case R.id.action_delete_notebook:
+                deleteNotebook();
+                finish();
+
+                break;
+
+            default:
                 break;
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void deleteNotebook() {
+        EverpobreProvider.deleteNotebook(notebookId);
+    }
+
+    private void saveNotebook() {
+        ContentResolver cr = getContentResolver();
+
+        // NotebookDAO notebookDao = new NotebookDAO(this);
+        String name = "" + editNotebookName.getText();
+        if ("".equals(name)) {
+            Toast.makeText(this, "We need a name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (mode == EditMode.ADDING) {
+            Notebook notebook = new Notebook(name);
+            cr.insert(EverpobreProvider.NOTEBOOKS_URI, NotebookDAO.getContentValues(notebook));
+            //notebookDao.insert(notebook);
+        } else {
+            notebookToEdit.setName(name);
+            String sUri = EverpobreProvider.NOTEBOOKS_URI.toString() + "/" + notebookToEdit.getId();
+            Uri uri = Uri.parse(sUri);
+            cr.update(uri, NotebookDAO.getContentValues(notebookToEdit), null, null);
+            //notebookDao.update(notebookId, notebookToEdit);
+        }
     }
 }
