@@ -440,6 +440,7 @@ loader.initLoader(0, null, this);
 	* lanzar actividad ShowNotebookActivity desde MainActivity
 	* mostrar notas en un GridView	
 
+![https://github.com/dfreniche/Everpobre/tree/step/14](https://img.shields.io/badge/step-14-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/14&link=https://github.com/dfreniche/Everpobre/tree/step/14)
 	
 ## Añadir notas
  
