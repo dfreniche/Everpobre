@@ -25,7 +25,7 @@ step/3
 	* Podemos bajar un `.gitignore` de [http://gitignore.io]()
 	* crear git rama desarrollo (usando SourceTree o desde línea de comandos)
 	
-* Añadir clase Application (__STEP 1__)
+* Añadir clase Application ![https://github.com/dfreniche/Everpobre/tree/step/1](https://img.shields.io/badge/step-1-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/1&link=https://github.com/dfreniche/Everpobre/tree/step/1)
 	* necesaria para inicializar el modelo, responder a situaciones de memoria baja, etc.
 	* Crear clase extiende de Application, EverpobreApp
 	* en el paquete de la App: io.keepcoding.everpobre
@@ -44,7 +44,7 @@ Preferences > Editor > File and Code Templates > Includes (tab) > File Header
 * separar temas de estilos en dos ficheros
 * establecer el estilo de la App en el AndroidManifest.xml: 		android:theme="@style/Everpobre"
 
-__ STEP 2 __
+![https://github.com/dfreniche/Everpobre/tree/step/2](https://img.shields.io/badge/step-2-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/2&link=https://github.com/dfreniche/Everpobre/tree/step/2)
 
 * __androidviews.com: controles para nuestra App__ ⚡️
 
@@ -59,7 +59,7 @@ __ STEP 2 __
 	* refactorizar el menú de la MainActivity para cargar EditNotebookActivity desde menu_main.xml
 	* añadir el Intent
 
-__STEP 3__
+![https://github.com/dfreniche/Everpobre/tree/step/3](https://img.shields.io/badge/step-3-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/3&link=https://github.com/dfreniche/Everpobre/tree/step/3)
 
 ## Acceso a BB.DD. con Android: SQLite
 
@@ -129,7 +129,7 @@ private String address;
 			- lazy getter		
 			
 			
-__STEP 4__
+![https://github.com/dfreniche/Everpobre/tree/step/4](https://img.shields.io/badge/step-4-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/4&link=https://github.com/dfreniche/Everpobre/tree/step/4)
 
    		* Crear el DB Helper (esqueleto, vacío) dentro del paquete model.db
 		   * ¿usar contexto de la EverpobreApp en DB? Esta clase es reusable: nos acoplaríamos innecesariamente
@@ -177,7 +177,7 @@ public interface DAOPersistable<T> {
 				* hacer weak el contexto
    				
 				   
-__STEP 5__
+![https://github.com/dfreniche/Everpobre/tree/step/5](https://img.shields.io/badge/step-5-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/5&link=https://github.com/dfreniche/Everpobre/tree/step/5)
 				   
 ## Probando el modelo de datos 
 
@@ -217,7 +217,7 @@ __STEP 5__
    			* solución: desinstalar la App, usando el simulador
     	
 		
-__STEP 6__		
+![https://github.com/dfreniche/Everpobre/tree/step/6](https://img.shields.io/badge/step-6-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/6&link=https://github.com/dfreniche/Everpobre/tree/step/6)
 		
 ## Mostrando un GridView con todos los Notebooks
 	
@@ -294,7 +294,8 @@ __STEP 6__
 		* esta clase podría testearse :-D
 	* Si lanzamos la App, se carga la MainActivity, carga el fragmento con el GridView, pero no vemos nada: el Fragmento no tiene adapter (aún)
 
-__STEP 7__		
+![https://github.com/dfreniche/Everpobre/tree/step/7](https://img.shields.io/badge/step-7-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/7&link=https://github.com/dfreniche/Everpobre/tree/step/7)
+
 		* Creando un GridView con vistas personalizadas
 			* añadir Layout vista personalizada al adapter
 		* Convert Fragment into generic fragment
@@ -312,7 +313,7 @@ __STEP 7__
     	* si tocamos cualquier Notebook, crash! El listener está a Null
 	
 	
-__STEP 8__		
+![https://github.com/dfreniche/Everpobre/tree/step/8](https://img.shields.io/badge/step-8-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/8&link=https://github.com/dfreniche/Everpobre/tree/step/8)
 	
 ## Añadir Notebooks
     
@@ -326,7 +327,7 @@ __STEP 8__
 	* problemas: ¡no funciona! Depuramos con tests
 	
 	
-__STEP 9__			
+![https://github.com/dfreniche/Everpobre/tree/step/9](https://img.shields.io/badge/step-9-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/9&link=https://github.com/dfreniche/Everpobre/tree/step/9)			
 
 ---	
 	
@@ -342,7 +343,7 @@ __STEP 9__
 	* en EditNotebookActivity, obtenemos el id y leemos el registro, para añadir / editar
 	    * cuándo grabar los datos de la BD
 
-__STEP 10__			
+![https://github.com/dfreniche/Everpobre/tree/step/10](https://img.shields.io/badge/step-10-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/10&link=https://github.com/dfreniche/Everpobre/tree/step/10)			
 
 
 ## Mandamiento: no accederás a DB en el hilo main
@@ -377,7 +378,7 @@ __STEP 10__
 	* añadir tests de estos métodos estáticos 
 
 
-__STEP 11__		
+![https://github.com/dfreniche/Everpobre/tree/step/11](https://img.shields.io/badge/step-11-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/11&link=https://github.com/dfreniche/Everpobre/tree/step/11)
 
 ### Cursor Loaders
 * Usar Cursor Loader en DataGridFragment
@@ -426,13 +427,13 @@ loader.initLoader(0, null, this);
 	* dejar vacío onResume()
 * Ahora no se actualizan las cosas. ¿Por qué? Porque usamos los DAO directamente en EditNotebookActivity. Usemos nuestro EverpobreProvider
 
-__STEP 12__
+![https://github.com/dfreniche/Everpobre/tree/step/12](https://img.shields.io/badge/step-12-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/12&link=https://github.com/dfreniche/Everpobre/tree/step/12)
 
 * Editar Notebooks II: borrar notebooks
 	* añadir opción de menu a EditNotebookActivity
 	* cuando se seleccione, borrar usando el content provider
     
-__STEP 13__	
+![https://github.com/dfreniche/Everpobre/tree/step/13](https://img.shields.io/badge/step-13-orange.svg?link=https://github.com/dfreniche/Everpobre/tree/step/13&link=https://github.com/dfreniche/Everpobre/tree/step/13)
 	
 * Listar todas las notas de un Notebook
 	* añadir onItemClickListener a GridView 
