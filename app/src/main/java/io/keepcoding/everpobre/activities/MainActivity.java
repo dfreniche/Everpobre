@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         dataGridFragment.setOnDataGridFragmentListener(new DataGridFragment.OnDataGridFragmentClickListener() {
             @Override
             public void dataGridElementClick(AdapterView<?> parent, View view, int position, long id) {
+                final NotebookDAO notebookDAO = new NotebookDAO(getBaseContext());
+                Notebook notebook = notebookDAO.query(id);
+
+                Intent i = new Intent(MainActivity.this, ShowNotebookActivity.class);
+                i.putExtra(Constants.intent_key_notebook_id, notebook.getId());
+                startActivity(i);
             }
 
             @Override
